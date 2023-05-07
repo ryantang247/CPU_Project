@@ -2,12 +2,11 @@
 
 module control32(
     input[5:0] Opcode, Function_opcode,
-    output Jr,Branch,nBranch,Jmp,Jal,RegDST,MemtoReg,RegWrite,MemWrite,ALUSrc,
+    output Jr,R_format,Branch,nBranch,Jmp,Jal,RegDST,MemtoReg,RegWrite,MemWrite,ALUSrc,
     output[1:0] ALUOp,
     output Sftmd,I_format
     );
     
-wire R_format;
 wire Lw;
 wire Sw;
 
