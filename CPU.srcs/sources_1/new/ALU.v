@@ -31,7 +31,7 @@ module ALU(
     input I_format, // 1 means I-Type instruction except beq, bne, LW, SW
     input Sftmd, // 1 means this is a shift instruction
     input R_format, Branch, nBranch,
-    output reg[31:0] ALU_Result, // the ALU calculation result
+    output [31:0] ALU_Result, // the ALU calculation result
     output reg Zero, // 1 means the ALU_result is zero, 0 otherwise
     output reg[31:0] Addr_Result
     );
@@ -52,6 +52,11 @@ assign Exe_code = (I_format==0) ? Function_opcode :{ 3'b000 , Opcode[2:0] };
 assign ALU_ctl[0] = (Exe_code[0] | Exe_code[3]) & ALUOp[1];
 assign ALU_ctl[1] = ((!Exe_code[2]) | (!ALUOp[1]));
 assign ALU_ctl[2] = (Exe_code[1] & ALUOp[1]) | ALUOp[0];
+assign ALU_Result = ALU_output_mux;
+
+//assign Branch_Addr = PC_plus_4[31:2] +  Sign_extend[31:0];
+//assign Addr_Result = Branch_Addr[31:0];
+//assign Zero = (ALU_output_mux[31:0] == 32'h00000000) ? 1'b1 : 1'b0;
 
 always@ (ALU_ctl or Ainput or Binput)
 begin
@@ -121,12 +126,12 @@ end
 always @* begin // six types of shift instructions
 if(Sftmd)
 case(Sftm[2:0])
-    3'b000:Shift_Result = Binput <<< Shamt; //Sll rd,rt,shamt 00000
-    3'b010:Shift_Result = Binput >>> Shamt; //Srl rd,rt,shamt 00010
-    3'b100:Shift_Result = Binput <<< Ainput; //Sllv rd,rt,rs 00100
-    3'b110:Shift_Result = Binput >>> Ainput; //Srlv rd,rt,rs 00110
-    3'b011:Shift_Result = Binput >> Shamt; //Sra rd,rt,shamt 00011
-    3'b111:Shift_Result = Binput >> Ainput; //Srav rd,rt,rs 00111
+    3'b000:Shift_Result = Binput << Shamt; //Sll rd,rt,shamt 00000
+    3'b010:Shift_Result = Binput >> Shamt; //Srl rd,rt,shamt 00010
+    3'b100:Shift_Result = Binput << Ainput; //Sllv rd,rt,rs 00100
+    3'b110:Shift_Result = Binput >> Ainput; //Srlv rd,rt,rs 00110
+    3'b011:Shift_Result = $signed(Binput) >>> Shamt; //Sra rd,rt,shamt 00011
+    3'b111:Shift_Result = Binput >>> Ainput; //Srav rd,rt,rs 00111
     default:Shift_Result = Binput;
 endcase
 else
