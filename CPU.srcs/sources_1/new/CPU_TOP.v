@@ -86,5 +86,8 @@ dmemory32 datamem(
     .upg_done_i()
 );
 
+Decoder(
+    .Instruction(Instruction),.read_data(Read_data_1), .ALU_result(), Jal, RegWrite, MemtoReg, RegDst, clock, reset, opcplus4, read_data_1, read_data_2, imme_extend
+ );
 
 endmodule
