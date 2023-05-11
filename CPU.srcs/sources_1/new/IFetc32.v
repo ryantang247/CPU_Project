@@ -18,7 +18,7 @@ module IFetc32(
     input Jr,                       // While Jr is 1, it means current instruction is jr
     output reg [31:0] PC, Next_PC   // Outputs
 );
-    prgrominstmem(
+    prgrom instmem(
     .clka(clock),
     .addra(PC[15:2]),
     .douta(Instruction)
