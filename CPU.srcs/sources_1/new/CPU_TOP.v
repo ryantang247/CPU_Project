@@ -43,8 +43,17 @@ wire [31:0]Addr_result;
 wire [31:0] branch_base_addr;// (PC+4) to ALU which is used by branch type instruction
 wire [31:0] link_addr; // (PC+4) to Decoder which is used by jal instruction
 wire [31:0] Read_data_1;
-
+wire [31:0]  read_data;  
 wire [31:0] PC, Next_PC;
+wire [31:0]  ALU_result; 
+wire  RegWrite;
+    wire         RegDst;          
+wire         clock,reset;     
+wire [31:0]  opcplus4;        
+
+wire [31:0] read_data_1;    
+wire [31:0] read_data_2;    
+reg[31:0] imme_extend;    
 
 cpuclk cpuclk(
     .clk_in1(fpga_clk),
@@ -86,8 +95,66 @@ dmemory32 datamem(
     .upg_done_i()
 );
 
-Decoder(
-    .Instruction(Instruction),.read_data(Read_data_1), .ALU_result(), Jal, RegWrite, MemtoReg, RegDst, clock, reset, opcplus4, read_data_1, read_data_2, imme_extend
+ Decoder decorder (
+   .Instruction(Instruction),
+   .read_data(read_data),
+   .ALU_result(ALU_result),
+   .Jal(Jal),
+   .RegWrite(RegWrite),
+   .MemtoReg(MemtoReg),
+   .RegDst(RegDst),
+   .clock(clock),
+   .reset(reset),
+   .opcplus4(opcplus4),
+   .read_data_1(read_data_1),
+   .read_data_2(read_data_2),
+   .imme_extend(imme_extend)
  );
 
+ALU alu(
+    .Read_data_1(Read_data_1),
+    .Read_data_2(Read_data_2),
+    .Sign_extend(Sign_extend),
+    .Opcode(Opcode),
+    .Function_opcode(Function_opcode),
+    .Shamt(Shamt),
+    .PC_plus_4(PC_plus_4),
+    .ALUOp(ALUOp),
+    .ALUSrc(ALUSrc),
+    .I_format(I_format),
+    .Sftmd(Sftmd),
+    .R_format(R_format),
+    .Branch(Branch),
+    .nBranch(nBranch),
+    .ALU_Result(ALU_Result),
+    .Zero(Zero),
+    .Addr_Result(Addr_Result)
+  );
+  
+   // instantiate the ALU_src module
+   ALU_src alu_src_inst (
+     .Read_data_1(Read_data_1), // connect input port Read_data_1
+     .Read_data_2(Read_data_2), // connect input port Read_data_2
+     .Sign_extend(Sign_extend), // connect input port Sign_extend
+     .ALUSrc(ALUSrc) // connect input port ALUSrc
+   );
+   
+   Controller controller_inst(
+   .Opcode(Opcode),
+   .Function_opcode(Function_opcode),
+   .Jr(Jr),
+   .Jmp(Jmp),
+   .Jal(Jal),
+   .Branch(Branch),
+   .nBranch(nBranch),
+   .RegDST(RegDST),
+   .MemtoReg(MemtoReg),
+   .RegWrite(RegWrite),
+   .MemWrite(MemWrite),
+   .ALUSrc(ALUSrc),
+   .I_format(I_format),
+   .Sftmd(Sftmd),
+   .ALUOp(ALUOp)
+   );
+   
 endmodule
