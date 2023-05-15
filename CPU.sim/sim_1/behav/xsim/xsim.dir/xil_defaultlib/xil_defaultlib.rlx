@@ -3,7 +3,7 @@
 Dec 15 2017
 21:07:18
 C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.sim/sim_1/behav/xsim/glbl.v,1513215259,verilog,,,,glbl,,,,,,,,
-C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sim_1/new/test_alu.v,1683483862,verilog,,,,test_ALU,,,,,,,,
-C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v,1683483665,verilog,,C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sim_1/new/test_alu.v,,ALU;ALU_src,,,,,,,,
+C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sim_1/new/test_alu.v,1683821523,verilog,,,,test_ALU,,,../../../../CPU.srcs/sources_1/ip/cpuclk,,,,,
+C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v,1683819076,verilog,,C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sim_1/new/test_alu.v,,ALU;ALU_src,,,../../../../CPU.srcs/sources_1/ip/cpuclk,,,,,
 C:/Users/User/Desktop/Computer organization/CPU/CPU.srcs/sim_1/new/test_controller.v,1681119853,verilog,,,,control32_tb,,,,,,,,
 C:/Users/User/Desktop/Computer organization/CPU/CPU.srcs/sources_1/new/controller.v,1681119830,verilog,,C:/Users/User/Desktop/Computer organization/CPU/CPU.srcs/sim_1/new/test_controller.v,,control32,,,,,,,,

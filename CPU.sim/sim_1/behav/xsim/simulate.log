@@ -1,4 +1,3 @@
 Vivado Simulator 2017.4
 Time resolution is 1 ps
-ALU_Result = 00000000, Zero = x, Addr_Result = xxxxxxxx
-ALU_Result = 00000000, Zero = x, Addr_Result = xxxxxxxx
+ALU_Result = 00000005, Zero = x, Addr_Result = xxxxxxxx

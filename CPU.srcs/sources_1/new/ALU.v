@@ -31,7 +31,7 @@ module ALU(
     input I_format, // 1 means I-Type instruction except beq, bne, LW, SW
     input Sftmd, // 1 means this is a shift instruction
     input R_format, Branch, nBranch,
-    output [31:0] ALU_Result, // the ALU calculation result
+    output reg[31:0] ALU_Result, // the ALU calculation result
     output reg Zero, // 1 means the ALU_result is zero, 0 otherwise
     output reg[31:0] Addr_Result
     );
@@ -47,12 +47,13 @@ reg[31:0] ALU_output_mux_signed; //results of signed calculations
 wire[32:0] Branch_Addr; // the calculated address of the instruction, Addr_Result is Branch_Addr[31:0]
 
 //assign R_format = (Opcode==6'b000000)? 1'b1:1'b0;
-assign ALUOp = { (R_format || I_format) , (Branch || nBranch) };
+//assign ALUOp = { (R_format || I_format) , (Branch || nBranch) };
+
+//000 {3 bits of function_opcode}
 assign Exe_code = (I_format==0) ? Function_opcode :{ 3'b000 , Opcode[2:0] };
 assign ALU_ctl[0] = (Exe_code[0] | Exe_code[3]) & ALUOp[1];
 assign ALU_ctl[1] = ((!Exe_code[2]) | (!ALUOp[1]));
 assign ALU_ctl[2] = (Exe_code[1] & ALUOp[1]) | ALUOp[0];
-assign ALU_Result = ALU_output_mux;
 
 //assign Branch_Addr = PC_plus_4[31:2] +  Sign_extend[31:0];
 //assign Addr_Result = Branch_Addr[31:0];
@@ -141,17 +142,17 @@ end
 //outputs the ALU_result
 always @* begin
 //set type operation (slt, slti, sltu, sltiu)
-if( ((ALU_ctl==3'b111) && (Exe_code[3]==1)) || ((ALU_ctl==3'b110) && (Exe_code[3]==1)) )
+if( ((ALU_ctl==3'b111) && (Exe_code[3]==1)) || ((ALU_ctl==3'b110) && (Exe_code[3]==1)))
     ALU_Result = (Ainput-Binput<0)?1:0;
     //lui operation
     else if((ALU_ctl==3'b101) && (I_format==1))
-        ALU_Result[31:0]=ALU_output_mux_2; //lui result;
+        ALU_Result[31:0]=ALU_output_mux; //lui result;
 //shift operation
     else if(Sftmd==1)
         ALU_Result = Shift_Result ;
 //other types of operation in ALU (arithmatic or logic calculation)
-else
-ALU_Result = ALU_output_mux[31:0];
+    else
+        ALU_Result = ALU_output_mux[31:0];
 end
 
 endmodule
