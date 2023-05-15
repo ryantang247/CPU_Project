@@ -21,7 +21,7 @@ wire upg_done_o; //Uart rx data have done
 wire [14:0] upg_adr_o;
 //data to program_rom or dmemory32
 wire [31:0] upg_dat_o;
-
+wire MemtoReg;
 wire spg_bufg;
 BUFG U1(.I(start_pg), .O(spg_bufg)); // de-twitter
 // Generate UART Programmer reset signal
@@ -111,6 +111,23 @@ dmemory32 datamem(
    .imme_extend(imme_extend)
  );
 
+  wire[31:0] Read_data_2; //one of the sources of Binput
+    wire[31:0] Sign_extend;//one of the sources of Binput
+    // from IFetch
+    wire[5:0] Opcode; //instruction[31:26]
+    wire[5:0] Function_opcode; //instructions[5:0]
+    wire[4:0] Shamt; //instruction[10:6], the amount of shift bits
+    wire[31:0] PC_plus_4; //pc+4
+// from Controller
+    wire[1:0] ALUOp; //{ (R_format || I_format) , (Branch || nBranch) }
+    wire ALUSrc; // 1 means the 2nd operand is an immediate (except beq,bne?
+    wire I_format; // 1 means I-Type instruction except beq, bne, LW, SW
+    wire Sftmd; // 1 means this is a shift instruction
+    wire R_format;
+     wire[31:0] ALU_Result;
+wire[31:0] Addr_Result;
+wire RegDST;
+wire MemWrite;
 ALU alu(
     .Read_data_1(Read_data_1),
     .Read_data_2(Read_data_2),
