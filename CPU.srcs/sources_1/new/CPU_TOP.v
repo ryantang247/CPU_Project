@@ -3,9 +3,10 @@
 module CPU_TOP(
     input fpga_rst,
     input fpga_clk,
-    input[23:0] switch2N4,
-    output[23:0] led2N4,
-    
+//    input[23:0] switch2N4,
+//    output[23:0] led2N4,
+    output [7:0] seg_out0, seg_out1,
+    output [7:0] seg_en,
     // UART Programmer Pinouts
     // start Uart communicate at high level
     input start_pg,
@@ -53,7 +54,7 @@ wire [31:0]  opcplus4;
 
 wire [31:0] read_data_1;    
 wire [31:0] read_data_2;    
-reg[31:0] imme_extend;    
+wire[31:0] imme_extend;    
 
 cpuclk cpuclk(
     .clk_in1(fpga_clk),
@@ -68,7 +69,7 @@ IFetc32 insMem(
     .branch_base_addr(branch_base_addr), 
     .link_addr(link_addr),        
     // Inputs
-    .clock(cpuclk), .reset(fpga_rst),             // Clock and reset
+    .clock(cpu_clk), .reset(fpga_rst),             // Clock and reset
     .Addr_result(Addr_result),       // Calculated address from ALU
     .Zero(Zero),                     // While Zero is 1, it means the ALUresult is zero
     .Read_data_1(Read_data_1),       // Address of instruction used by jr instruction
@@ -81,19 +82,19 @@ IFetc32 insMem(
     .Next_PC(Next_PC)   // Outputs
 );
 
-dmemory32 datamem(
-    .clk(cpu_clk),
-    .wea(), //controller
-    .addra(),
-    .din(),
-    .douta(),
-    .upg_rst_i(), // UPG reset (Active High)
-    .upg_clk_i(), // UPG ram_clk_i (10MHz)
-   .upg_wen_i(), // UPG write enable
-    .upg_adr_i(), // UPG write address
-    .upg_dat_i(), // UPG write data
-    .upg_done_i()
-);
+//dmemory32 datamem(
+//    .clk(cpu_clk),
+//    .wea(), //controller
+//    .addra(),
+//    .din(),
+//    .douta(),
+//    .upg_rst_i(), // UPG reset (Active High)
+//    .upg_clk_i(), // UPG ram_clk_i (10MHz)
+//   .upg_wen_i(), // UPG write enable
+//    .upg_adr_i(), // UPG write address
+//    .upg_dat_i(), // UPG write data
+//    .upg_done_i()
+//);
 
  Decoder decorder (
    .Instruction(Instruction),
@@ -128,6 +129,7 @@ dmemory32 datamem(
 wire[31:0] Addr_Result;
 wire RegDST;
 wire MemWrite;
+
 
 executs32 alu(
     .Read_data_1(Read_data_1),
@@ -173,6 +175,15 @@ executs32 alu(
    .I_format(I_format),
    .Sftmd(Sftmd),
    .ALUOp(ALUOp)
+   );
+   
+   top_segment mileage_record(
+   .clk(cpu_clk),
+   .rst(rst),
+   .num(ALU_Result),
+   .anode(seg_en),
+   .cathode(seg_out0),
+   .cathode2(seg_out1)
    );
    
 endmodule
