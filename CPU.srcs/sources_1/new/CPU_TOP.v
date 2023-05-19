@@ -128,7 +128,8 @@ dmemory32 datamem(
 wire[31:0] Addr_Result;
 wire RegDST;
 wire MemWrite;
-ALU alu(
+
+executs32 alu(
     .Read_data_1(Read_data_1),
     .Read_data_2(Read_data_2),
     .Sign_extend(Sign_extend),
@@ -149,12 +150,12 @@ ALU alu(
   );
   
    // instantiate the ALU_src module
-   ALU_src alu_src_inst (
-     .Read_data_1(Read_data_1), // connect input port Read_data_1
-     .Read_data_2(Read_data_2), // connect input port Read_data_2
-     .Sign_extend(Sign_extend), // connect input port Sign_extend
-     .ALUSrc(ALUSrc) // connect input port ALUSrc
-   );
+//   ALU_src alu_src_inst (
+//     .Read_data_1(Read_data_1), // connect input port Read_data_1
+//     .Read_data_2(Read_data_2), // connect input port Read_data_2
+//     .Sign_extend(Sign_extend), // connect input port Sign_extend
+//     .ALUSrc(ALUSrc) // connect input port ALUSrc
+//   );
    
    Controller controller_inst(
    .Opcode(Opcode),

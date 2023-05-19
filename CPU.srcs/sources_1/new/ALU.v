@@ -1,19 +1,19 @@
 `timescale 1ns / 1ps
 
-module ALU_src(
-input[31:0] Read_data_1, // from Decoder
-input[31:0] Read_data_2, // from Decoder
-input[31:0] Sign_extend, // from Decoder
-// from Controller, 1 means the Binput is an extended immediate, otherwise the Binput is Read_data_2
-input ALUSrc
-);
+//module ALU_src(
+//input[31:0] Read_data_1, // from Decoder
+//input[31:0] Read_data_2, // from Decoder
+//input[31:0] Sign_extend, // from Decoder
+//// from Controller, 1 means the Binput is an extended immediate, otherwise the Binput is Read_data_2
+//input ALUSrc
+//);
 
-wire Ainput;
-wire Binput;
-assign Ainput = Read_data_1;
-assign Binput = (ALUSrc == 0) ? Read_data_2 : Sign_extend[31:0];
+//wire Ainput;
+//wire Binput;
+//assign Ainput = Read_data_1;
+//assign Binput = (ALUSrc == 0) ? Read_data_2 : Sign_extend[31:0];
 
-endmodule
+//endmodule
 
 module executs32(
     input[31:0] Read_data_1, //the source of Ainput
@@ -32,7 +32,7 @@ module executs32(
     output reg Zero,
     input Sftmd, // 1 means this is a shift instruction
     output reg[31:0] ALU_Result, // the ALU calculation result
-    output reg[31:0] Addr_Result,
+    output [31:0] Addr_Result,
     input[31:0] PC_plus_4, //pc+4
     input Jr
      // 1 means the ALU_result is zero, 0 otherwise
@@ -46,7 +46,9 @@ reg[31:0] Shift_Result; // the result of shift operation
 reg[31:0] ALU_output_mux; // the result of arithmetic or logic calculation
 reg[31:0] ALU_output_mux_2;
 reg[31:0] ALU_output_mux_signed; //results of signed calculations
-wire[32:0] Branch_Addr; // the calculated address of the instruction, Addr_Result is Branch_Addr[31:0]
+reg[31:0] Branch_Addr; // the calculated address of the instruction, Addr_Result is Branch_Addr[31:0]
+
+reg tempZero;
 
 //assign R_format = (Opcode==6'b000000)? 1'b1:1'b0;
 //assign ALUOp = { (R_format || I_format) , (Branch || nBranch) };
@@ -59,17 +61,25 @@ assign ALU_ctl[2] = (Exe_code[1] & ALUOp[1]) | ALUOp[0];
 
 assign Ainput = Read_data_1;
 assign Binput = (ALUSrc == 0) ? Read_data_2 : Sign_extend[31:0];
-
-//assign Branch_Addr = PC_plus_4[31:2] +  Sign_extend[31:0];
-//assign Addr_Result = Branch_Addr[31:0];
+initial begin
+  Branch_Addr = 32'b0;
+  Zero = 0;
+end
+assign Addr_Result = Branch_Addr[31:0];
 //assign Zero = (ALU_output_mux[31:0] == 32'h00000000) ? 1'b1 : 1'b0;
+//assign Zero = (ALU_output_mux[31:0] == 32'h00000000) ? 1'b1 : 1'b0;
+
+//default values:
 
 always@ (ALU_ctl or Ainput or Binput)
 begin
 case(ALU_ctl)
     3'b000:ALU_output_mux = Ainput & Binput;
     3'b001:ALU_output_mux = Ainput | Binput;
-    3'b010:ALU_output_mux = Ainput + Binput;
+    3'b010:
+    begin
+    ALU_output_mux = Ainput + Binput;
+    end
     3'b011:ALU_output_mux = Ainput + Binput;
     3'b100:ALU_output_mux = Ainput ^ Binput;
     3'b101:
@@ -78,40 +88,60 @@ case(ALU_ctl)
     begin
         ALU_output_mux = ~(Ainput | Binput); //nor
         if(I_format==1)
-        ALU_output_mux_2[31:16] = Sign_extend[15:0]; //lui
+        ALU_output_mux[31:16] = Sign_extend[15:0]; //lui
     end
     end
     3'b110:
     begin
-    if(ALUOp ==2'b10)
-    begin
-        if(I_format && Function_opcode[3]==1)
-            assign Zero = (Ainput < Binput); //slti
-        else
-            ALU_output_mux = Ainput - Binput; //sub
-    end
-    else 
-    begin
-    if(I_format && ALUOp ==2'b01)
-    begin
-    if(Exe_opcode[3:0]==4'b0100)
-    begin
-      if(Read_data_1 == Read_data_2)
-        assign Addr_Result= PC_plus_4 + (Sign_extend - PC_plus_4) *4; //beq
-      end
-    end
-    else 
-    begin
-        if(Read_data_1 != Read_data_2)
-            assign Addr_Result= PC_plus_4 + (Sign_extend - PC_plus_4) *4; //bne?
-    end
-    end
+        if(ALUOp ==2'b10)
+            begin
+            if(I_format && Function_opcode[3]==1)
+                assign Zero = (Ainput < Binput); //slti
+            else
+            begin
+                Zero=0;
+                ALU_output_mux = Ainput - Binput; //sub
+            end
+            end
+        else 
+            begin
+        //beq and bne instructions 
+            if(I_format && ALUOp ==2'b01)
+                begin
+                //if it's beq, since beq = 100 while bne is 101
+                if(Exe_opcode[3:0]==4'b0100)
+                begin
+                    if(Read_data_1 == Read_data_2)
+                    begin
+                    Branch_Addr = Branch_Addr+ Sign_extend[31:0];
+                    Zero =1;
+                    end
+                    else 
+                    begin
+                      Zero=0;
+                    end
+            end
+        end
+        else 
+            begin
+                if(Read_data_1 != Read_data_2)
+                begin
+                    assign Branch_Addr = PC_plus_4[31:0] +  Sign_extend[31:0];
+                    assign Zero =1;
+                end
+                else
+                begin
+                    Zero=0;
+                    assign Branch_Addr = PC_plus_4[31:0];
+                end
+            end
+        end
     end
     3'b111:begin
     if(I_format)
     begin
         if(Function_opcode[3]==1)
-            assign Zero = (Ainput < Sign_extend); //sltiu
+            assign tempZero = (Ainput < Sign_extend); //sltiu
         else 
         begin
         if(Exe_code[3:0]==4'b1010)
@@ -122,10 +152,15 @@ case(ALU_ctl)
     end 
     else
     begin
+        Zero = 0;
         ALU_output_mux =  Ainput - Binput; //subu
     end
     end        
-    default: ALU_output_mux = 32'h00000000;
+    default:
+    begin
+    assign Zero = 0;
+    ALU_output_mux = 32'h00000000;
+    end
 endcase
 end
 
