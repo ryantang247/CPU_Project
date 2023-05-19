@@ -96,7 +96,7 @@ case(ALU_ctl)
         if(ALUOp ==2'b10)
             begin
             if(I_format && Function_opcode[3]==1)
-                assign Zero = (Ainput < Binput); //slti
+                Zero = (Ainput < Binput); //slti
             else
             begin
                 Zero=0;
@@ -126,13 +126,13 @@ case(ALU_ctl)
             begin
                 if(Read_data_1 != Read_data_2)
                 begin
-                    assign Branch_Addr = PC_plus_4[31:0] +  Sign_extend[31:0];
-                    assign Zero =1;
+                    Branch_Addr = PC_plus_4[31:0] +  Sign_extend[31:0];
+                    Zero =1;
                 end
                 else
                 begin
                     Zero=0;
-                    assign Branch_Addr = PC_plus_4[31:0];
+                    Branch_Addr = PC_plus_4[31:0];
                 end
             end
         end
@@ -141,13 +141,13 @@ case(ALU_ctl)
     if(I_format)
     begin
         if(Function_opcode[3]==1)
-            assign tempZero = (Ainput < Sign_extend); //sltiu
+            tempZero = (Ainput < Sign_extend); //sltiu
         else 
         begin
         if(Exe_code[3:0]==4'b1010)
-              assign Zero = (Ainput < Binput); //sltu, using exe code to differentiate
+              Zero = (Ainput < Binput); //sltu, using exe code to differentiate
         else 
-              assign Zero = ($signed(Ainput) <$signed(Binput)); //slt
+              Zero = ($signed(Ainput) <$signed(Binput)); //slt
         end
     end 
     else
@@ -158,7 +158,7 @@ case(ALU_ctl)
     end        
     default:
     begin
-    assign Zero = 0;
+    Zero = 0;
     ALU_output_mux = 32'h00000000;
     end
 endcase
