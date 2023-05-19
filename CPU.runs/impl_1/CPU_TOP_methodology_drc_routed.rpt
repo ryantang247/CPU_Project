@@ -1,0 +1,96 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+| Date         : Fri May 19 14:43:15 2023
+| Host         : LAPTOP-7DP6T06H running 64-bit major release  (build 9200)
+| Command      : report_methodology -file CPU_TOP_methodology_drc_routed.rpt -pb CPU_TOP_methodology_drc_routed.pb -rpx CPU_TOP_methodology_drc_routed.rpx
+| Design       : CPU_TOP
+| Device       : xc7a35tcsg324-1
+| Speed File   : -1
+| Design State : Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 12
++-----------+----------+-----------------------------+------------+
+| Rule      | Severity | Description                 | Violations |
++-----------+----------+-----------------------------+------------+
+| TIMING-17 | Warning  | Non-clocked sequential cell | 4          |
+| TIMING-20 | Warning  | Non-clocked latch           | 8          |
++-----------+----------+-----------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-17#1 Warning
+Non-clocked sequential cell  
+The clock pin mileage_record/seven_seg/Refreshcounter_wrapper/refreshcounter_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#2 Warning
+Non-clocked sequential cell  
+The clock pin mileage_record/seven_seg/Refreshcounter_wrapper/refreshcounter_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#3 Warning
+Non-clocked sequential cell  
+The clock pin mileage_record/seven_seg/Refreshcounter_wrapper/refreshcounter_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#4 Warning
+Non-clocked sequential cell  
+The clock pin mileage_record/seven_seg/Refreshcounter_wrapper/refreshcounter_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch mileage_record/seven_seg/anodeCtr/anode_reg[0] cannot be properly analyzed as its control pin mileage_record/seven_seg/anodeCtr/anode_reg[0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch mileage_record/seven_seg/anodeCtr/anode_reg[1] cannot be properly analyzed as its control pin mileage_record/seven_seg/anodeCtr/anode_reg[1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch mileage_record/seven_seg/anodeCtr/anode_reg[2] cannot be properly analyzed as its control pin mileage_record/seven_seg/anodeCtr/anode_reg[2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch mileage_record/seven_seg/anodeCtr/anode_reg[3] cannot be properly analyzed as its control pin mileage_record/seven_seg/anodeCtr/anode_reg[3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch mileage_record/seven_seg/anodeCtr/anode_reg[4] cannot be properly analyzed as its control pin mileage_record/seven_seg/anodeCtr/anode_reg[4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch mileage_record/seven_seg/anodeCtr/anode_reg[5] cannot be properly analyzed as its control pin mileage_record/seven_seg/anodeCtr/anode_reg[5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch mileage_record/seven_seg/anodeCtr/anode_reg[6] cannot be properly analyzed as its control pin mileage_record/seven_seg/anodeCtr/anode_reg[6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch mileage_record/seven_seg/anodeCtr/anode_reg[7] cannot be properly analyzed as its control pin mileage_record/seven_seg/anodeCtr/anode_reg[7]/G is not reached by a timing clock
+Related violations: <none>
+
+

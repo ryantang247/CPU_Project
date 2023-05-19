@@ -9,9 +9,9 @@ module CPU_TOP(
     output [7:0] seg_en,
     // UART Programmer Pinouts
     // start Uart communicate at high level
-    input start_pg,
-    input rx,
-    output tx  
+    input start_pg
+//    input rx,
+//    output tx  
     );
 
 // UART Programmer Pinouts
@@ -135,7 +135,7 @@ executs32 alu(
     .Read_data_1(Read_data_1),
     .Read_data_2(Read_data_2),
     .Sign_extend(Sign_extend),
-    .Opcode(Opcode),
+    .Exe_opcode(Opcode),
     .Function_opcode(Function_opcode),
     .Shamt(Shamt),
     .PC_plus_4(PC_plus_4),
@@ -143,9 +143,8 @@ executs32 alu(
     .ALUSrc(ALUSrc),
     .I_format(I_format),
     .Sftmd(Sftmd),
-    .R_format(R_format),
-    .Branch(Branch),
-    .nBranch(nBranch),
+//    .Branch(Branch),
+//    .nBranch(nBranch),
     .ALU_Result(ALU_Result),
     .Zero(Zero),
     .Addr_Result(Addr_Result)

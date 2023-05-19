@@ -14,4 +14,848 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 21680 
+INFO: Helper process launched with PID 22464 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 342.895 ; gain = 103.098
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'CPU_TOP' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:3]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (1#1) [C:/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-638] synthesizing module 'cpuclk' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/realtime/cpuclk_stub.v:5]
+INFO: [Synth 8-256] done synthesizing module 'cpuclk' (2#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/realtime/cpuclk_stub.v:5]
+INFO: [Synth 8-638] synthesizing module 'IFetc32' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/IFetc32.v:3]
+INFO: [Synth 8-638] synthesizing module 'prgrom' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/realtime/prgrom_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'prgrom' (3#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/realtime/prgrom_stub.v:6]
+WARNING: [Synth 8-3848] Net branch_base_addr in module/entity IFetc32 does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/IFetc32.v:6]
+WARNING: [Synth 8-3848] Net link_addr in module/entity IFetc32 does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/IFetc32.v:7]
+INFO: [Synth 8-256] done synthesizing module 'IFetc32' (4#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/IFetc32.v:3]
+INFO: [Synth 8-638] synthesizing module 'Decoder' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/decoder.v:23]
+INFO: [Synth 8-256] done synthesizing module 'Decoder' (5#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/decoder.v:23]
+INFO: [Synth 8-638] synthesizing module 'executs32' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:18]
+INFO: [Synth 8-226] default block is never used [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:76]
+WARNING: [Synth 8-567] referenced signal 'Sftmd' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'I_format' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'Sign_extend' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'ALUOp' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'Function_opcode' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'Exe_opcode' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'Read_data_1' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'Read_data_2' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'PC_plus_4' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-567] referenced signal 'Exe_code' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:74]
+WARNING: [Synth 8-3848] Net Sftm in module/entity executs32 does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:44]
+INFO: [Synth 8-256] done synthesizing module 'executs32' (6#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:18]
+WARNING: [Synth 8-350] instance 'alu' of module 'executs32' requires 15 connections, but only 14 given [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:134]
+INFO: [Synth 8-638] synthesizing module 'Controller' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/controller.v:23]
+INFO: [Synth 8-256] done synthesizing module 'Controller' (7#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/controller.v:23]
+WARNING: [Synth 8-350] instance 'controller_inst' of module 'Controller' requires 20 connections, but only 15 given [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:161]
+INFO: [Synth 8-638] synthesizing module 'top_segment' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/top_mileage.v:3]
+INFO: [Synth 8-638] synthesizing module 'clock_divider' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/clock_divider_mileage.v:1]
+	Parameter div_value bound to: 4999 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'clock_divider' (8#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/clock_divider_mileage.v:1]
+INFO: [Synth 8-638] synthesizing module 'clock_divider__parameterized0' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/clock_divider_mileage.v:1]
+	Parameter div_value bound to: 4999999 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'clock_divider__parameterized0' (8#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/clock_divider_mileage.v:1]
+INFO: [Synth 8-638] synthesizing module 'binary_BCD' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/binary_BCD.v:4]
+INFO: [Synth 8-256] done synthesizing module 'binary_BCD' (9#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/binary_BCD.v:4]
+WARNING: [Synth 8-689] width (32) of port connection 'sixteenbit_val' does not match port width (16) of module 'binary_BCD' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/top_mileage.v:33]
+INFO: [Synth 8-638] synthesizing module 'seven_seg_controller' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/seven_seg_controller.v:3]
+INFO: [Synth 8-638] synthesizing module 'refreshcounter' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/refreshcounter.v:3]
+INFO: [Synth 8-256] done synthesizing module 'refreshcounter' (10#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/refreshcounter.v:3]
+INFO: [Synth 8-638] synthesizing module 'anode_ctrl' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/anode_ctrl.v:3]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/anode_ctrl.v:9]
+INFO: [Synth 8-256] done synthesizing module 'anode_ctrl' (11#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/anode_ctrl.v:3]
+INFO: [Synth 8-638] synthesizing module 'BCD_ctrl' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:3]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:18]
+WARNING: [Synth 8-567] referenced signal 'Ones' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:16]
+WARNING: [Synth 8-567] referenced signal 'Tens' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:16]
+WARNING: [Synth 8-567] referenced signal 'Hundreds' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:16]
+WARNING: [Synth 8-567] referenced signal 'Thousands' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:16]
+WARNING: [Synth 8-567] referenced signal 'TenThousands' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:16]
+WARNING: [Synth 8-567] referenced signal 'HundredThousands' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:16]
+WARNING: [Synth 8-567] referenced signal 'Millions' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:16]
+WARNING: [Synth 8-567] referenced signal 'TenMillions' should be on the sensitivity list [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:16]
+INFO: [Synth 8-256] done synthesizing module 'BCD_ctrl' (12#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:3]
+INFO: [Synth 8-638] synthesizing module 'BCD_to_Cathodes' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_to_Cathodes.v:3]
+INFO: [Synth 8-256] done synthesizing module 'BCD_to_Cathodes' (13#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_to_Cathodes.v:3]
+INFO: [Synth 8-256] done synthesizing module 'seven_seg_controller' (14#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/seven_seg_controller.v:3]
+INFO: [Synth 8-256] done synthesizing module 'top_segment' (15#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/top_mileage.v:3]
+WARNING: [Synth 8-3848] Net tx in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:14]
+WARNING: [Synth 8-3848] Net Read_data_1 in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:46]
+WARNING: [Synth 8-3848] Net Read_data_2 in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:115]
+WARNING: [Synth 8-3848] Net Sign_extend in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:116]
+WARNING: [Synth 8-3848] Net Function_opcode in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:119]
+WARNING: [Synth 8-3848] Net Opcode in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:118]
+WARNING: [Synth 8-3848] Net Shamt in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:120]
+WARNING: [Synth 8-3848] Net PC_plus_4 in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:121]
+WARNING: [Synth 8-3848] Net Addr_result in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:43]
+WARNING: [Synth 8-3848] Net read_data in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:47]
+WARNING: [Synth 8-3848] Net ALU_result in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:49]
+WARNING: [Synth 8-3848] Net RegDst in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:51]
+WARNING: [Synth 8-3848] Net clock in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:52]
+WARNING: [Synth 8-3848] Net reset in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:52]
+WARNING: [Synth 8-3848] Net opcplus4 in module/entity CPU_TOP does not have driver. [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:53]
+INFO: [Synth 8-256] done synthesizing module 'CPU_TOP' (16#1) [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:3]
+WARNING: [Synth 8-3331] design top_segment has unconnected port rst
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[31]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[30]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[29]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[28]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[27]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[26]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[25]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[24]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[23]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[22]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[21]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[20]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[19]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[18]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[17]
+WARNING: [Synth 8-3331] design top_segment has unconnected port num[16]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Function_opcode[5]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Function_opcode[4]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Exe_opcode[5]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Exe_opcode[4]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Jr
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[31]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[30]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[29]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[28]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[27]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[26]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[25]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[24]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[23]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[22]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[21]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[20]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[19]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[18]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[17]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[16]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[15]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[14]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[13]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[12]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[11]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[10]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[9]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[8]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[7]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[6]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[5]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[4]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[3]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[2]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[1]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port branch_base_addr[0]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[31]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[30]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[29]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[28]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[27]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[26]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[25]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[24]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[23]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[22]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[21]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[20]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[19]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[18]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[17]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[16]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[15]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[14]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[13]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[12]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[11]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[10]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[9]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[8]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[7]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[6]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[5]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[4]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[3]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[2]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[1]
+WARNING: [Synth 8-3331] design IFetc32 has unconnected port link_addr[0]
+WARNING: [Synth 8-3331] design CPU_TOP has unconnected port tx
+WARNING: [Synth 8-3331] design CPU_TOP has unconnected port rx
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 395.031 ; gain = 155.234
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[31] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[30] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[29] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[28] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[27] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[26] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[25] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[24] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[23] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[22] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[21] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[20] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[19] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[18] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[17] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[16] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[15] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[14] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[13] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[12] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[11] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[10] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[9] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[8] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[7] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[6] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[5] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[4] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[3] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[2] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[1] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Addr_result[0] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[31] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[30] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[29] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[28] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[27] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[26] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[25] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[24] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[23] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[22] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[21] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[20] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[19] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[18] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[17] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[16] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[15] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[14] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[13] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[12] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[11] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[10] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[9] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[8] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[7] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[6] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[5] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[4] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[3] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[2] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[1] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin insMem:Read_data_1[0] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:66]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[31] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[30] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[29] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[28] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[27] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[26] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[25] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[24] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[23] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[22] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[21] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[20] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[19] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[18] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[17] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[16] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[15] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[14] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[13] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[12] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[11] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[10] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[9] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[8] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[7] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[6] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[5] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[4] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[3] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[2] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[1] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:read_data[0] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:ALU_result[31] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:ALU_result[30] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:ALU_result[29] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+WARNING: [Synth 8-3295] tying undriven pin decorder:ALU_result[28] to constant 0 [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/CPU_TOP.v:99]
+INFO: [Common 17-14] Message 'Synth 8-3295' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 395.031 ; gain = 155.234
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/dcp2/cpuclk_in_context.xdc] for cell 'cpuclk'
+Finished Parsing XDC File [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/dcp2/cpuclk_in_context.xdc] for cell 'cpuclk'
+Parsing XDC File [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/dcp3/prgrom_in_context.xdc] for cell 'insMem/instmem'
+Finished Parsing XDC File [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/dcp3/prgrom_in_context.xdc] for cell 'insMem/instmem'
+Parsing XDC File [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/constrs_1/new/cons.xdc]
+Finished Parsing XDC File [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/constrs_1/new/cons.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/constrs_1/new/cons.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/CPU_TOP_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/CPU_TOP_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 736.750 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 736.750 ; gain = 496.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 736.750 ; gain = 496.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for fpga_clk. (constraint file  {C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/dcp2/cpuclk_in_context.xdc}, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for fpga_clk. (constraint file  {C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/.Xil/Vivado-23996-LAPTOP-7DP6T06H/dcp2/cpuclk_in_context.xdc}, line 5).
+Applied set_property DONT_TOUCH = true for cpuclk. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for insMem/instmem. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 736.750 ; gain = 496.953
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5546] ROM "register_reg[0]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[1]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[2]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[3]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[4]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[5]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[6]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[7]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[8]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[9]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[10]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[11]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[12]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[13]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[14]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[15]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[16]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[17]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[18]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[19]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[20]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[21]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[22]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[23]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[24]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[25]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[26]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[27]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[28]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[29]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[30]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "register_reg[31]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:76]
+INFO: [Synth 8-5544] ROM "Zero" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "R_format" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "I_format" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "sw" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "cnt_val" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "divided_clk" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "cnt_val" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "divided_clk" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element i_reg was removed.  [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/binary_BCD.v:29]
+WARNING: [Synth 8-6014] Unused sequential element refreshcounter_reg was removed.  [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/refreshcounter.v:8]
+WARNING: [Synth 8-327] inferring latch for variable 'Zero_reg' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:99]
+WARNING: [Synth 8-327] inferring latch for variable 'ALU_output_mux_reg' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:77]
+WARNING: [Synth 8-327] inferring latch for variable 'Branch_Addr_reg' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/new/ALU.v:68]
+WARNING: [Synth 8-327] inferring latch for variable 'anode_reg' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/anode_ctrl.v:11]
+WARNING: [Synth 8-327] inferring latch for variable 'a_digit_reg' [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/BCD_ctrl.v:20]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 736.750 ; gain = 496.953
+---------------------------------------------------------------------------------
+INFO: [Synth 8-223] decloning instance 'mileage_record/seven_seg/BCD_cathodes' (BCD_to_Cathodes) to 'mileage_record/seven_seg/BCD_cathodes2'
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 5     
+	   3 Input     32 Bit       Adders := 1     
+	   3 Input      9 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 9     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Registers : 
+	               50 Bit    Registers := 1     
+	               32 Bit    Registers := 4     
+	               16 Bit    Registers := 1     
+	                9 Bit    Registers := 1     
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 17    
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     50 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 15    
+	   7 Input     32 Bit        Muxes := 1     
+	   8 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      9 Bit        Muxes := 2     
+	   2 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 33    
+	   2 Input      1 Bit        Muxes := 50    
+	   8 Input      1 Bit        Muxes := 4     
+	  11 Input      1 Bit        Muxes := 1     
+	  10 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module CPU_TOP 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module IFetc32 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+Module Decoder 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   2 Input      5 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 32    
+Module executs32 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 2     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 6     
+	   7 Input     32 Bit        Muxes := 1     
+	   8 Input     32 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 8     
+	   8 Input      1 Bit        Muxes := 3     
+	  11 Input      1 Bit        Muxes := 1     
+Module Controller 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 7     
+Module clock_divider 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module clock_divider__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module binary_BCD 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      9 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 2     
+	   2 Input      4 Bit       Adders := 8     
++---Registers : 
+	               50 Bit    Registers := 1     
+	               16 Bit    Registers := 1     
+	                9 Bit    Registers := 1     
+	                4 Bit    Registers := 16    
++---Muxes : 
+	   2 Input     50 Bit        Muxes := 2     
+	   2 Input      9 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 32    
+Module refreshcounter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+Module anode_ctrl 
+Detailed RTL Component Info : 
++---Muxes : 
+	  10 Input      1 Bit        Muxes := 1     
+Module BCD_ctrl 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 1     
+	   8 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6014] Unused sequential element clkcnt_generator/cnt_val_reg was removed.  [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/clock_divider_mileage.v:9]
+WARNING: [Synth 8-6014] Unused sequential element clkcnt_generator/divided_clk_reg was removed.  [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/clock_divider_mileage.v:18]
+INFO: [Synth 8-5545] ROM "clkdiv_generator/cnt_val" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "clkdiv_generator/divided_clk" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "controller_inst/R_format" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "controller_inst/I_format" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "mileage_record/clkdiv_generator/cnt_val" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "mileage_record/clkdiv_generator/divided_clk" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element mileage_record/converter/i_reg was removed.  [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/binary_BCD.v:29]
+WARNING: [Synth 8-6014] Unused sequential element mileage_record/seven_seg/Refreshcounter_wrapper/refreshcounter_reg was removed.  [C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.srcs/sources_1/sevseg/refreshcounter.v:8]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Function_opcode[5]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Function_opcode[4]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Exe_opcode[5]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Exe_opcode[4]
+WARNING: [Synth 8-3331] design executs32 has unconnected port Jr
+WARNING: [Synth 8-3331] design CPU_TOP has unconnected port tx
+WARNING: [Synth 8-3331] design CPU_TOP has unconnected port rx
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[0] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[0]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[1] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[1]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[2] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[2]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[3] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[3]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[4]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[4] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[4]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[5]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[5] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[5]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[6]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[6] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[6]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[7]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[7] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[7]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[8]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[8] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[8]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[9]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[9] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[9]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[10]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[10] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[10]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[11]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[11] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[11]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[12]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[12] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[12]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[13]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[13] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[13]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[14]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[14] )
+INFO: [Synth 8-3886] merging instance 'mileage_record/converter/init_sixteenbit_val_reg[14]' (FDE) to 'mileage_record/converter/init_sixteenbit_val_reg[15]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (alu/\ALU_output_mux_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\mileage_record/converter/init_sixteenbit_val_reg[15] )
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[31]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[30]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[29]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[28]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[27]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[26]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[25]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[24]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[23]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[22]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[21]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[20]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[19]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[18]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[17]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[16]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (insMem/PC_reg[0]) is unused and will be removed from module CPU_TOP.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][31]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][30]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][29]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][28]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][27]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][26]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][25]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][24]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][23]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][22]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][21]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][20]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][19]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][18]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][17]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][16]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][15]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][14]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][13]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][12]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][11]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][10]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][9]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][8]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][7]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][6]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][5]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][4]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][3]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][2]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][1]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[0][0]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][31]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][30]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][29]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][28]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][27]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][26]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][25]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][24]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][23]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][22]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][21]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][20]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][19]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][18]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][17]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][16]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][15]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][14]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][13]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][12]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][11]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][10]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][9]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][8]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][7]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][6]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][5]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][4]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][3]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][2]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][1]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[1][0]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][31]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][30]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][29]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][28]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][27]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][26]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][25]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][24]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][23]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][22]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][21]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][20]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][19]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][18]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][17]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][16]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][15]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][14]) is unused and will be removed from module Decoder.
+WARNING: [Synth 8-3332] Sequential element (register_reg[2][13]) is unused and will be removed from module Decoder.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:20 . Memory (MB): peak = 736.750 ; gain = 496.953
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5578] Moved timing constraint from pin 'cpuclk/clk_out1' to pin 'cpuclk/bbstub_clk_out1/O'
+INFO: [Synth 8-5578] Moved timing constraint from pin 'cpuclk/clk_out2' to pin 'cpuclk/bbstub_clk_out2/O'
+INFO: [Synth 8-5819] Moved 2 constraints on hierarchical pins to their respective driving/loading pins
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 736.750 ; gain = 496.953
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 745.062 ; gain = 505.266
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 745.883 ; gain = 506.086
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 745.883 ; gain = 506.086
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 745.883 ; gain = 506.086
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 745.883 ; gain = 506.086
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 745.883 ; gain = 506.086
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 745.883 ; gain = 506.086
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 745.883 ; gain = 506.086
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |cpuclk        |         1|
+|2     |prgrom        |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |cpuclk |     1|
+|2     |prgrom |     1|
+|3     |BUFG   |     1|
+|4     |CARRY4 |    12|
+|5     |LUT1   |     3|
+|6     |LUT2   |     1|
+|7     |LUT3   |     1|
+|8     |LUT4   |    15|
+|9     |LUT5   |     5|
+|10    |FDRE   |    52|
+|11    |LD     |     8|
+|12    |IBUF   |     2|
+|13    |OBUF   |    24|
+|14    |OBUFT  |     1|
++------+-------+------+
+
+Report Instance Areas: 
++------+-----------------------------+---------------------+------+
+|      |Instance                     |Module               |Cells |
++------+-----------------------------+---------------------+------+
+|1     |top                          |                     |   159|
+|2     |  insMem                     |IFetc32              |    52|
+|3     |  mileage_record             |top_segment          |    77|
+|4     |    clkdiv_generator         |clock_divider        |    52|
+|5     |    seven_seg                |seven_seg_controller |    25|
+|6     |      Refreshcounter_wrapper |refreshcounter       |    17|
+|7     |      anodeCtr               |anode_ctrl           |     8|
++------+-----------------------------+---------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 745.883 ; gain = 506.086
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1322 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:22 . Memory (MB): peak = 745.883 ; gain = 164.367
+Synthesis Optimization Complete : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 745.883 ; gain = 506.086
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 22 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  LD => LDCE: 8 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+134 Infos, 345 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 745.883 ; gain = 515.348
+INFO: [Common 17-1381] The checkpoint 'C:/Users/User/Desktop/Computer organization/CPU Project/CPU_Project/CPU.runs/synth_1/CPU_TOP.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file CPU_TOP_utilization_synth.rpt -pb CPU_TOP_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 745.883 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Fri May 19 14:42:14 2023...
