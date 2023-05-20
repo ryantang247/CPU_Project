@@ -15,15 +15,15 @@ module seven_seg_controller(
     output wire [7:0] cathode2
     );
     
-wire [3:0] refreshcounter;
+//wire [3:0] refreshcounter;
 wire [3:0] a_digit;
 
-refreshcounter Refreshcounter_wrapper (
-    .refresh_clock(refresh_clk),
-    .refreshcounter(refreshcounter)
-);
+//refreshcounter Refreshcounter_wrapper (
+//    .refresh_clock(refresh_clk),
+//    .refreshcounter(refreshcounter)
+//);
 
- anode_ctrl anodeCtr(refreshcounter, anode);
+ //anode_ctrl anodeCtr(refreshcounter, anode);
     
     BCD_ctrl bcdCTR(
     .Ones(Ones), .Tens(Tens),
