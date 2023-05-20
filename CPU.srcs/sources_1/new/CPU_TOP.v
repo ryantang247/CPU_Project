@@ -7,7 +7,6 @@ module CPU_TOP(
 //    output[23:0] led2N4,
     output [7:0] seg_out0, seg_out1,
     output [7:0] seg_en,
-    output test_wire,
     output clock_led,
     // UART Programmer Pinouts
     // start Uart communicate at high level
@@ -30,8 +29,6 @@ BUFG U1(.I(start_pg), .O(spg_bufg)); // de-twitter
 // Generate UART Programmer reset signal
 reg upg_rst;
 
-
-
 always @ (posedge fpga_clk) begin
 if (spg_bufg) upg_rst = 0;
 if (fpga_rst) upg_rst = 1;
@@ -40,10 +37,11 @@ end
 wire rst;
 assign rst = fpga_rst | !upg_rst;
 
+wire cpu_clk, uart_clk, seven_seg_clk;
+
 //important data
 wire Zero,Branch,nBranch, Jmp,Jal,Jr; 
 
-wire cpu_clk, uart_clk;
 wire [31:0] Instruction; // Instruction fetched from this module to Decoder and Controller
 wire [31:0]Addr_result;
 wire [31:0] branch_base_addr;// (PC+4) to ALU which is used by branch type instruction
@@ -53,25 +51,26 @@ wire[31:0] Read_data_2; //one of the sources of Binput
 //wire [31:0]  read_data;  
 wire [31:0] PC, Next_PC;
 wire [31:0]  ALU_result; 
-wire         clock,reset;     
+wire  clock,reset;     
 wire [31:0]  opcplus4;        
    
 wire [31:0]  read_data; //the write data into regs
 wire[31:0] imme_extend;    
 
 wire[31:0] Sign_extend;//one of the sources of Binput
-    // from IFetch
+
+// from IFetch
 wire[5:0] Opcode; //instruction[31:26]
 wire[5:0] Function_opcode; //instructions[5:0]
 wire[4:0] Shamt; //instruction[10:6], the amount of shift bits
  wire[31:0] PC_plus_4; //pc+4
+ 
 // from Controller
 wire[1:0] ALUOp; //{ (R_format || I_format) , (Branch || nBranch) }
 wire ALUSrc; // 1 means the 2nd operand is an immediate (except beq,bne?
 wire I_format; // 1 means I-Type instruction except beq, bne, LW, SW
 wire Sftmd; // 1 means this is a shift instruction
 wire R_format;
-//wire RegDST;
 wire MemWrite;
 wire  RegWrite;
 wire  RegDst; 
@@ -87,14 +86,13 @@ cpuclk cpuclk(
     .clk_out2(uart_clk)
 );
 
-
 IFetc32 insMem(
     // Outputs
     .Instruction(Instruction),      
     .branch_base_addr(branch_base_addr), 
     .link_addr(link_addr),        
     // Inputs
-    .clock(cpu_clock_slow), .reset(fpga_rst),             // Clock and reset
+    .clock(cpu_clk), .reset(fpga_rst),             // Clock and reset
     .Addr_result(Addr_result),       // Calculated address from ALU
     .Zero(Zero),                     // While Zero is 1, it means the ALUresult is zero
     .Read_data_1(Read_data_1),       // Address of instruction used by jr instruction
@@ -106,7 +104,7 @@ IFetc32 insMem(
 );
 
 dmemory32 datamem(
-    .clock(cpu_clock_slow),
+    .clock(cpu_clk),
     .memWrite(MemWrite), //controller
     .address(ALU_result),
     .writeData(Read_data_2),
@@ -119,21 +117,20 @@ dmemory32 datamem(
 //    .upg_done_i()
 );
 
- Decoder decorder (
+ decode32 decoder (
    .Instruction(Instruction),
-   .read_data(read_data), //write data from memory
+   .mem_data(read_data), //write data from memory
    .ALU_result(ALU_result),
    .Jal(Jal),
    .RegWrite(RegWrite),
    .MemtoReg(MemtoReg),
    .RegDst(RegDst),
-   .clock(cpu_clock_slow),
+   .clock(cpu_clk),
    .reset(reset),
    .opcplus4(opcplus4),
    .read_data_1(Read_data_1),
    .read_data_2(Read_data_2),
-   .imme_extend(imme_extend),
-   .test_wire(test_wire)
+   .Sign_extend(imme_extend)
  );
 
 assign Opcode =Instruction[31:26];
@@ -142,7 +139,7 @@ assign Function_opcode =Instruction[5:0];
 executs32 alu(
     .Read_data_1(Read_data_1),
     .Read_data_2(Read_data_2),
-    .Sign_extend(Sign_extend),
+    .Sign_extend(imme_extend),
     .Exe_opcode(Opcode),
     .Function_opcode(Function_opcode),
     .Shamt(Shamt),
@@ -185,7 +182,7 @@ executs32 alu(
    );
    
    top_segment mileage_record(
-   .clk(cpu_clock_slow),
+   .clk(cpu_clk),
    .rst(rst),
    .num(Instruction),
    .anode(seg_en),

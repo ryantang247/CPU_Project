@@ -60,9 +60,6 @@ set_property PACKAGE_PIN F1 [get_ports {seg_en[2]}]
 set_property PACKAGE_PIN E1 [get_ports {seg_en[1]}]
 set_property PACKAGE_PIN G6 [get_ports {seg_en[0]}]
 
-set_property PACKAGE_PIN K2 [get_ports test_wire]
-set_property IOSTANDARD LVCMOS33 [get_ports test_wire]
-
 set_property PACKAGE_PIN K1 [get_ports clock_led]
 set_property IOSTANDARD LVCMOS33 [get_ports clock_led]
 

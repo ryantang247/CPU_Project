@@ -6,6 +6,7 @@ module CPU_TOP_tb;
 //  wire [23:0] led2N4;
   wire [7:0] seg_out0, seg_out1;
   wire [7:0] seg_en;
+  wire clock_led;
   reg start_pg;
 //  wire rx;
 //  reg tx;
@@ -18,6 +19,7 @@ module CPU_TOP_tb;
     .seg_out0(seg_out0),
     .seg_out1(seg_out1),
     .seg_en(seg_en),
+    .clock_led(clock_led),
     .start_pg(start_pg)
 //    .rx(rx),
 //    .tx(tx)
@@ -42,7 +44,7 @@ module CPU_TOP_tb;
 
     // Add testbench stimulus here
 
-    #100;
+    #1000000;
     $finish;
   end
 

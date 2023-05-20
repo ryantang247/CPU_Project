@@ -10,7 +10,7 @@ module BCD_ctrl(
   input [3:0] Millions, //x_000_000
   input [3:0] TenMillions, //x0_000_000 =x000_0000
   
-  input [3:0] clk_div,
+  input [2:0] clk_div,
   output reg [3:0] a_digit
 );
   always@(clk_div)

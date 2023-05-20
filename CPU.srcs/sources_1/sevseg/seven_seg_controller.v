@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module seven_seg_controller(
-    input wire refresh_clk,
+    input wire clock,
     input wire [3:0] Ones,
     input wire [3:0] Tens,
     input wire [3:0] Hundreds,
@@ -15,16 +15,16 @@ module seven_seg_controller(
     output wire [7:0] cathode2
     );
     
-//wire [3:0] refreshcounter;
-wire [3:0] a_digit;
+wire [3:0] refreshcounter;
+wire [2:0] a_digit;
 
-//refreshcounter Refreshcounter_wrapper (
-//    .refresh_clock(refresh_clk),
-//    .refreshcounter(refreshcounter)
-//);
+refreshcounter Refreshcounter_wrapper (
+    .refresh_clock(clock),
+    .refreshcounter(refreshcounter)
+);
 
- //anode_ctrl anodeCtr(refreshcounter, anode);
-    
+anode_ctrl anodeCtr(refreshcounter, anode);
+  
     BCD_ctrl bcdCTR(
     .Ones(Ones), .Tens(Tens),
     .Hundreds(Hundreds), .Thousands(Thousands),

@@ -1,123 +1,85 @@
-`timescale 1ns / 1ps
+module decode32(read_data_1,read_data_2,Instruction,mem_data,ALU_result,
+                 Jal,RegWrite,MemtoReg,RegDst,Sign_extend,clock,reset,opcplus4);
+input[31:0]  Instruction;               // The instruction fetched 
+input[31:0]  mem_data;   				// DATA taken from the DATA RAM or I/O port for writing data to a specified register
+input[31:0]  ALU_result;   				// The result of an operation from the Arithmetic logic unit ALU used to write data to a specified register
+input        Jal;                       // From the control unit Controller, when the value is 1, it indicates that it is a JAL instruction
+input        RegWrite;                  // From the control unit Controller, when the value is 1, do register write; When the value is 0, no write is performed
+input        MemtoReg;                  // From the control unit Controller, indicating that DATA is written to a register after it is removed from the DATA RAM
+input        RegDst;             //Control write to which specified register in instructions. when RegDst is 1, write to the target register, such as R type Rd; Is 0, writes the second register, such as I type is Rt
+input		 clock;                     //Clock signal
+input 		 reset;                     //Reset signal, active high level and clear all registers. Writing is not allowed here.
+input[31:0]  opcplus4;                 // The JAL instruction is used to write the return address to the $ra register, what we have got here is PC + 4
 
-module Decoder(
-    Instruction, read_data, ALU_result, Jal, RegWrite, MemtoReg, RegDst, clock, reset, opcplus4, read_data_1, read_data_2, imme_extend,
-    test_wire
-    );
-    input [31:0]  Instruction;     
-    input [31:0]  read_data;       
-    input [31:0]  ALU_result;      
-    input         Jal;            
-    input         RegWrite;        
-    input         MemtoReg;        
-    input         RegDst;          
-    input         clock,reset;     
-    input [31:0]  opcplus4;        
-    
-    output [31:0] read_data_1;    
-    output [31:0] read_data_2;    
-    output reg[31:0] imme_extend;
-    output reg test_wire;
-    
-    wire [5:0]  opcode;
-    wire [4:0]  rs;
-    wire [4:0]  rt;
-    wire [4:0]  rd;
-    wire [4:0]  shamt;
-    wire [5:0]  funct;
-    wire [15:0] immediate;
-    wire [25:0] address;
-    assign opcode       = Instruction[31:26];
-    assign rs           = Instruction[25:21];
-    assign rt           = Instruction[20:16];
-    assign rd           = Instruction[15:11];
-    assign shamt        = Instruction[10:6];
-    assign funct        = Instruction[5:0];
-    assign immediate    = Instruction[15:0];
-    assign address      = Instruction[25:0];
-        
-    reg[31:0]   register[31:0];
-    integer i;
-        initial
-        begin
-            for(i=0;i<=31;i=i+1) begin
-                register[i] <= 32'b0;
+output[31:0] read_data_1;
+output[31:0] read_data_2;
+output[31:0] Sign_extend;
+// mem_data = read_data
+
+// all the register
+reg [31:0] Regs[0:31];
+reg [4:0] WriteReg;
+reg [31:0] WriteRegData;
+//rs and rt
+wire[4:0] ReadReg_1;
+wire[4:0] ReadReg_2;
+wire[4:0] R_WriteReg;
+wire[4:0] I_WriteReg;
+wire[5:0] Opcode;
+integer j;
+initial
+    begin
+        for(j=0;j<=31;j=j+1) begin
+            Regs[j] <= 32'b0;
+        end
+    end
+
+assign ReadReg_1 = Instruction[25:21];
+assign ReadReg_2 = Instruction[20:16];
+assign R_WriteReg = Instruction[15:11];
+assign I_WriteReg = Instruction[20:16];
+assign Opcode = Instruction[31:26];
+
+//except addiu and sltiu.
+assign Sign_extend = (Opcode == 6'b001011 || Opcode == 6'b001100 || Opcode == 6'b001101 || Opcode == 6'b001110)? {16'h0000, Instruction[15:0]}:
+{{16{Instruction[15]}}, Instruction[15:0]};
+assign read_data_1 = Regs[ReadReg_1];
+assign read_data_2 = Regs[ReadReg_2];
+
+always @* begin
+        if (RegWrite == 1'b1) begin 
+            if (Opcode == 6'b000000 && RegDst == 1'b1) begin
+                WriteReg = R_WriteReg;
+            end
+            else if (Opcode == 6'b000011 && Jal == 1'b1) begin
+                WriteReg = 5'b11111;
+            end
+            else begin
+                WriteReg = I_WriteReg;
             end
         end
-    reg[4:0]    write_register_address; 
-    reg[31:0]   write_data;            
-    wire    sign_bit;
-    assign   sign_bit = immediate[15];
-    wire    [15:0] sign_extend; 
-    assign   sign_extend = (sign_bit == 1'b1)? 16'b1111_1111_1111_1111:16'b0000_0000_0000_0000;
-        
-        
-            assign read_data_1 = register[rs];
-            assign read_data_2 = register[rt];
-            
-            always @(*) begin
-                    //  addi¡¢addiu¡¢lw
-                    // andi¡¢ori
-                    // andi¡¢ori 
-                    if(opcode == 6'b001101 || opcode == 6'b001101) begin
-                      imme_extend = {16'b0000_0000_0000_0000,immediate};
-                    end
-                    else begin
-                      imme_extend = {sign_extend,immediate};
-                    end
-                end
-            
-            
-                always @(*) begin
-                    if(RegWrite == 1'b1) begin
-                        // Jal 
-                      test_wire =1;
-                      if(Jal == 1'b1) begin
-                        write_register_address = 5'b11111; // 32
-                      end
- 
-                      else if(RegDst == 1'b1) begin
-                        write_register_address = rd;
-                      end
+    end
 
-                      else if (RegDst == 1'b0) begin
-                        write_register_address = rt;
-                      end
-                    end
-                end
-            
+//write into registers.
+    integer i = 0;
+    always @(posedge clock) begin
+        if(reset == 1'b1) begin
+            for(i = 0; i < 32; i = i + 1)
+                Regs[i] <= 32'h0000_0000;
+        end
+        else begin
+            if (RegWrite == 1'b1 && WriteReg != 1'b0) begin
+                    Regs[WriteReg] <= WriteRegData;
+            end
+        end
+    end
 
-                always @(*) begin
-                    if(RegWrite == 1'b1) begin
-                      // Jal Ö¸Áî
-                      if(Jal == 1'b1) begin
-                        write_data = opcplus4;
-                      end
-
-                      else if(MemtoReg == 1'b0) begin
-                        write_data = ALU_result;
-                      end
-
-                      else if(MemtoReg == 1'b1) begin
-                        write_data = read_data;
-                      end
-                    end
-                end
-            
-            
-                integer j; 
-                always @(negedge clock) begin
-                    
-                    if(reset) begin
-                      for(j = 0; j < 32; j = j + 1) 
-                      register[i] <= 32'b0;
-                    end
-                    else begin
-
-                        if(RegWrite == 1'b1 && write_register_address!=0) begin
-                          register[write_register_address] <= write_data;
-                        end
-                    end
-                end
-            
+// what to write
+//write what?
+    always @* begin
+        if (MemtoReg == 1'b1) WriteRegData <= mem_data;
+        else if (Opcode == 6'b000011 && Jal == 1'b1) WriteRegData <= opcplus4;
+        else WriteRegData <= ALU_result;
+    end
+    
 endmodule

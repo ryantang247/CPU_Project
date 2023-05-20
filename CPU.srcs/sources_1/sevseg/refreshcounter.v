@@ -2,7 +2,7 @@
 
 module refreshcounter(
     input refresh_clock,
-    output reg [3:0] refreshcounter =0
+    output reg [3:0] refreshcounter
     );
     
     always@ (posedge refresh_clock)refreshcounter <= refreshcounter+1;

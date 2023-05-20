@@ -2,7 +2,7 @@
 //light_7seg_ego1.v but diff in cathode output
 module BCD_to_Cathodes (
   input [3:0] digit,
-  output reg [7:0] cathode = 0
+  output reg [7:0] cathode
   );
   always @ (digit)
     begin 
