@@ -5,7 +5,7 @@ module freq_div(clock_in,clock_out
 input clock_in; // input clock on FPGA
 output reg clock_out; // output clock after dividing the input clock by divisor
 reg[27:0] counter=28'd0;
-parameter DIVISOR = 28'd100000000;
+parameter DIVISOR = 28'd23000000;
 always @(posedge clock_in)
 begin
  counter <= counter + 28'd1;

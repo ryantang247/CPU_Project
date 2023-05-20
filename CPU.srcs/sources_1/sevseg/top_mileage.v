@@ -23,15 +23,6 @@ module top_segment(//input rst_n,//reset: low effective
     binary_BCD converter(clk, num, Ones, Tens, Hundreds,
     Thousands, TenThousands, HundredThousands, Millions, TenMillions);
     clock_divider #(2300) clkdiv_generator (clk, clk_div); //10kHz clock signal
-    //refreshclock 
-//    assign Ones = num[3:0];
-//    assign Tens = num[7:4];
-//    assign Hundreds = num[11:8];
-//    assign Thousands = num[15:12];
-//    assign TenThousands = num[19:16];
-//    assign HundredThousands = num[23:20];
-//    assign Millions = num[27:24];
-//    assign TenMillions = num[31:28];
     
     seven_seg_controller seven_seg(.clock(clk_div),.Ones(Ones),.Tens(Tens),
     .Hundreds(Hundreds),.Thousands(Thousands),.TenThousands(TenThousands),.HundredThousands(HundredThousands),.Millions(Millions),.TenMillions(TenMillions),

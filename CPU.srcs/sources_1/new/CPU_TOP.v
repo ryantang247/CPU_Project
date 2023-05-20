@@ -155,14 +155,6 @@ executs32 alu(
     .Addr_Result(Addr_result)
   );
   
-   // instantiate the ALU_src module
-//   ALU_src alu_src_inst (
-//     .Read_data_1(Read_data_1), // connect input port Read_data_1
-//     .Read_data_2(Read_data_2), // connect input port Read_data_2
-//     .Sign_extend(Sign_extend), // connect input port Sign_extend
-//     .ALUSrc(ALUSrc) // connect input port ALUSrc
-//   );
-   
    control32 controller_inst(
    .Opcode(Opcode),
    .Function_opcode(Function_opcode),
@@ -184,7 +176,7 @@ executs32 alu(
    top_segment mileage_record(
    .clk(cpu_clk),
    .rst(rst),
-   .num(Instruction),
+   .num(ALU_result),
    .anode(seg_en),
    .cathode(seg_out0),
    .cathode2(seg_out1)
