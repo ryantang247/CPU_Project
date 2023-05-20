@@ -7,6 +7,8 @@ module CPU_TOP(
 //    output[23:0] led2N4,
     output [7:0] seg_out0, seg_out1,
     output [7:0] seg_en,
+    output test_wire,
+    output clock_led,
     // UART Programmer Pinouts
     // start Uart communicate at high level
     input start_pg
@@ -27,6 +29,9 @@ wire spg_bufg;
 BUFG U1(.I(start_pg), .O(spg_bufg)); // de-twitter
 // Generate UART Programmer reset signal
 reg upg_rst;
+
+
+
 always @ (posedge fpga_clk) begin
 if (spg_bufg) upg_rst = 0;
 if (fpga_rst) upg_rst = 1;
@@ -44,17 +49,37 @@ wire [31:0]Addr_result;
 wire [31:0] branch_base_addr;// (PC+4) to ALU which is used by branch type instruction
 wire [31:0] link_addr; // (PC+4) to Decoder which is used by jal instruction
 wire [31:0] Read_data_1;
-wire [31:0]  read_data;  
+wire[31:0] Read_data_2; //one of the sources of Binput
+//wire [31:0]  read_data;  
 wire [31:0] PC, Next_PC;
 wire [31:0]  ALU_result; 
-wire  RegWrite;
-    wire         RegDst;          
 wire         clock,reset;     
 wire [31:0]  opcplus4;        
-
-wire [31:0] read_data_1;    
-wire [31:0] read_data_2;    
+   
+wire [31:0]  read_data; //the write data into regs
 wire[31:0] imme_extend;    
+
+wire[31:0] Sign_extend;//one of the sources of Binput
+    // from IFetch
+wire[5:0] Opcode; //instruction[31:26]
+wire[5:0] Function_opcode; //instructions[5:0]
+wire[4:0] Shamt; //instruction[10:6], the amount of shift bits
+ wire[31:0] PC_plus_4; //pc+4
+// from Controller
+wire[1:0] ALUOp; //{ (R_format || I_format) , (Branch || nBranch) }
+wire ALUSrc; // 1 means the 2nd operand is an immediate (except beq,bne?
+wire I_format; // 1 means I-Type instruction except beq, bne, LW, SW
+wire Sftmd; // 1 means this is a shift instruction
+wire R_format;
+//wire RegDST;
+wire MemWrite;
+wire  RegWrite;
+wire  RegDst; 
+
+//for debugging purposes, ffrequency divider and it's new clock
+wire cpu_clock_slow;
+freq_div freqdiv(cpu_clk,cpu_clock_slow);
+assign clock_led = cpu_clock_slow;
 
 cpuclk cpuclk(
     .clk_in1(fpga_clk),
@@ -69,7 +94,7 @@ IFetc32 insMem(
     .branch_base_addr(branch_base_addr), 
     .link_addr(link_addr),        
     // Inputs
-    .clock(cpu_clk), .reset(fpga_rst),             // Clock and reset
+    .clock(cpu_clock_slow), .reset(fpga_rst),             // Clock and reset
     .Addr_result(Addr_result),       // Calculated address from ALU
     .Zero(Zero),                     // While Zero is 1, it means the ALUresult is zero
     .Read_data_1(Read_data_1),       // Address of instruction used by jr instruction
@@ -77,59 +102,42 @@ IFetc32 insMem(
     .nBranch(nBranch),                  // While nBranch is 1, it means current instruction is bnq
     .Jmp(Jmp),                      // While Jmp is 1, it means current instruction is jump
     .Jal(Jal),                      // While Jal is 1, it means current instruction is jal
-    .Jr(Jr),                       // While Jr is 1, it means current instruction is jr
-    .PC(PC),
-    .Next_PC(Next_PC)   // Outputs
+    .Jr(Jr)                   // While Jr is 1, it means current instruction is jr
 );
 
-//dmemory32 datamem(
-//    .clk(cpu_clk),
-//    .wea(), //controller
-//    .addra(),
-//    .din(),
-//    .douta(),
+dmemory32 datamem(
+    .clock(cpu_clock_slow),
+    .memWrite(MemWrite), //controller
+    .address(ALU_result),
+    .writeData(Read_data_2),
+    .readData(read_data)
 //    .upg_rst_i(), // UPG reset (Active High)
 //    .upg_clk_i(), // UPG ram_clk_i (10MHz)
 //   .upg_wen_i(), // UPG write enable
 //    .upg_adr_i(), // UPG write address
 //    .upg_dat_i(), // UPG write data
 //    .upg_done_i()
-//);
+);
 
  Decoder decorder (
    .Instruction(Instruction),
-   .read_data(read_data),
+   .read_data(read_data), //write data from memory
    .ALU_result(ALU_result),
    .Jal(Jal),
    .RegWrite(RegWrite),
    .MemtoReg(MemtoReg),
    .RegDst(RegDst),
-   .clock(clock),
+   .clock(cpu_clock_slow),
    .reset(reset),
    .opcplus4(opcplus4),
-   .read_data_1(read_data_1),
-   .read_data_2(read_data_2),
-   .imme_extend(imme_extend)
+   .read_data_1(Read_data_1),
+   .read_data_2(Read_data_2),
+   .imme_extend(imme_extend),
+   .test_wire(test_wire)
  );
 
-  wire[31:0] Read_data_2; //one of the sources of Binput
-    wire[31:0] Sign_extend;//one of the sources of Binput
-    // from IFetch
-    wire[5:0] Opcode; //instruction[31:26]
-    wire[5:0] Function_opcode; //instructions[5:0]
-    wire[4:0] Shamt; //instruction[10:6], the amount of shift bits
-    wire[31:0] PC_plus_4; //pc+4
-// from Controller
-    wire[1:0] ALUOp; //{ (R_format || I_format) , (Branch || nBranch) }
-    wire ALUSrc; // 1 means the 2nd operand is an immediate (except beq,bne?
-    wire I_format; // 1 means I-Type instruction except beq, bne, LW, SW
-    wire Sftmd; // 1 means this is a shift instruction
-    wire R_format;
-     wire[31:0] ALU_Result;
-wire[31:0] Addr_Result;
-wire RegDST;
-wire MemWrite;
-
+assign Opcode =Instruction[31:26];
+assign Function_opcode =Instruction[5:0];
 
 executs32 alu(
     .Read_data_1(Read_data_1),
@@ -138,16 +146,16 @@ executs32 alu(
     .Exe_opcode(Opcode),
     .Function_opcode(Function_opcode),
     .Shamt(Shamt),
-    .PC_plus_4(PC_plus_4),
+    .PC_plus_4(branch_base_addr),
     .ALUOp(ALUOp),
     .ALUSrc(ALUSrc),
     .I_format(I_format),
     .Sftmd(Sftmd),
 //    .Branch(Branch),
 //    .nBranch(nBranch),
-    .ALU_Result(ALU_Result),
+    .ALU_Result(ALU_result),
     .Zero(Zero),
-    .Addr_Result(Addr_Result)
+    .Addr_Result(Addr_result)
   );
   
    // instantiate the ALU_src module
@@ -158,7 +166,7 @@ executs32 alu(
 //     .ALUSrc(ALUSrc) // connect input port ALUSrc
 //   );
    
-   Controller controller_inst(
+   control32 controller_inst(
    .Opcode(Opcode),
    .Function_opcode(Function_opcode),
    .Jr(Jr),
@@ -166,7 +174,7 @@ executs32 alu(
    .Jal(Jal),
    .Branch(Branch),
    .nBranch(nBranch),
-   .RegDST(RegDST),
+   .RegDST(RegDst),
    .MemtoReg(MemtoReg),
    .RegWrite(RegWrite),
    .MemWrite(MemWrite),
@@ -177,9 +185,9 @@ executs32 alu(
    );
    
    top_segment mileage_record(
-   .clk(cpu_clk),
+   .clk(cpu_clock_slow),
    .rst(rst),
-   .num(ALU_Result),
+   .num(Instruction),
    .anode(seg_en),
    .cathode(seg_out0),
    .cathode2(seg_out1)

@@ -1,21 +1,6 @@
 `timescale 1ns / 1ps
 
-//module ALU_src(
-//input[31:0] Read_data_1, // from Decoder
-//input[31:0] Read_data_2, // from Decoder
-//input[31:0] Sign_extend, // from Decoder
-//// from Controller, 1 means the Binput is an extended immediate, otherwise the Binput is Read_data_2
-//input ALUSrc
-//);
-
-//wire Ainput;
-//wire Binput;
-//assign Ainput = Read_data_1;
-//assign Binput = (ALUSrc == 0) ? Read_data_2 : Sign_extend[31:0];
-
-//endmodule
-
-module executs32(
+module executs32_old(
     input[31:0] Read_data_1, //the source of Ainput
     input[31:0] Read_data_2, //one of the sources of Binput
     input[31:0] Sign_extend, //one of the sources of Binput
@@ -44,10 +29,7 @@ wire[2:0] ALU_ctl; // the control signals which affact operation in ALU directel
 wire[2:0] Sftm; // identify the types of shift instruction, equals to Function_opcode[2:0]
 reg[31:0] Shift_Result; // the result of shift operation
 reg[31:0] ALU_output_mux; // the result of arithmetic or logic calculation
-reg[31:0] ALU_output_mux_2;
-reg[31:0] ALU_output_mux_signed; //results of signed calculations
 reg[31:0] Branch_Addr; // the calculated address of the instruction, Addr_Result is Branch_Addr[31:0]
-
 reg tempZero;
 
 //assign R_format = (Opcode==6'b000000)? 1'b1:1'b0;

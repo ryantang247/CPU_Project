@@ -1,26 +1,6 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 2023/05/02 19:58:41
-// Design Name: 
-// Module Name: Controller
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
-
-module Controller(
+module control32(
     input [5:0]Opcode,      // instruction[31:26]
     input [5:0]Function_opcode,     // r-type instruction[5:0]
     input [21:0] Alu_resultHigh,
@@ -69,16 +49,16 @@ module Controller(
     assign ALUOp = {(R_format || I_format),(Branch || nBranch)};
     
     //new assignment for MemorIO
-    assign RegWrite = (R_format || Lw || Jal || I_format) && !(Jr) ; // Write memory or write IO
+    //assign RegWrite = (R_format || Lw || Jal || I_format) && !(Jr) ; // Write memory or write IO
     
     assign sw = (Opcode == 6'b101011)?1'b1:1'b0;
     
-    //may need to change MemWrite for MemorIO
-    assign MemWrite = ((sw==1) && (Alu_resultHigh[21:0] != 22'h3FFFFF)) ? 1'b1:1'b0;
-    assign MemRead = (Lw  == 1'b1&& (Alu_resultHigh[21:0] != 22'b1111111111111111111111))?1'b1:1'b0; // Read memory
-    assign IORead = (Lw  == 1'b1&& (Alu_resultHigh[21:0] == 22'b1111111111111111111111))?1'b1:1'b0; // Read input port
-    assign IOWrite = (sw == 1'b1&& (Alu_resultHigh[21:0] == 22'b1111111111111111111111))?1'b1:1'b0; // Write output port
-    // Read operations require reading data from memory or I/O to write to the register
-    assign MemorIOtoReg = IORead || MemRead;
+//    //may need to change MemWrite for MemorIO
+//    assign MemWrite = ((sw==1) && (Alu_resultHigh[21:0] != 22'h3FFFFF)) ? 1'b1:1'b0;
+//    assign MemRead = (Lw  == 1'b1&& (Alu_resultHigh[21:0] != 22'b1111111111111111111111))?1'b1:1'b0; // Read memory
+//    assign IORead = (Lw  == 1'b1&& (Alu_resultHigh[21:0] == 22'b1111111111111111111111))?1'b1:1'b0; // Read input port
+//    assign IOWrite = (sw == 1'b1&& (Alu_resultHigh[21:0] == 22'b1111111111111111111111))?1'b1:1'b0; // Write output port
+//    // Read operations require reading data from memory or I/O to write to the register
+//    assign MemorIOtoReg = IORead || MemRead;
     
 endmodule
