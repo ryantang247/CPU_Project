@@ -24,7 +24,6 @@ wire upg_wen_led;
 wire upg_done_o; //Uart rx data have done
 wire upg_done_led;
 
-
 //data to which memory unit of program_rom/dmemory32
 wire [14:0] upg_adr_o;
 
@@ -117,7 +116,7 @@ IFetc32 insMem(
        .upg_clk_o(upg_clk_o), .upg_wen_o(upg_wen_o), .upg_adr_o(upg_adr_o), .upg_dat_o(upg_dat_o), .upg_done_o(upg_done_o));
        
        
-   programrom program(.rom_clk_i(cpu_clk),.rom_adr_i(rom_adr_o[15:2]),.Instruction_o(Instruction),
+   programrom program(.rom_clk_i(cpu_clock_slow),.rom_adr_i(rom_adr_o[15:2]),.Instruction_o(Instruction),
        .upg_rst_i(upg_rst),.upg_clk_i(upg_clk),.upg_wen_i(upg_wen_o&!upg_adr_o[14]),
        .upg_adr_i(upg_adr_o[13:0]),.upg_dat_i(upg_dat_o),.upg_done_i(upg_done_o));
 
