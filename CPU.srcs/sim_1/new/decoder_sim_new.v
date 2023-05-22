@@ -10,7 +10,7 @@ module Decoder_TB;
     wire [31:0] read_data, ALU_result, read_data_1, read_data_2, imme_extend;
     
     // Instantiate the Decoder module
-    Decoder dut (
+    decode32 dut (
         .Instruction(Instruction),
         .read_data(read_data),
         .ALU_result(ALU_result),

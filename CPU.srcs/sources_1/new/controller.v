@@ -31,10 +31,10 @@ module control32(
     assign R_format = (Opcode==6'b000000)? 1'b1:1'b0;
 
     assign Jr =((Function_opcode==6'b001000)&&(Opcode==6'b000000)) ? 1'b1 : 1'b0;
-    assign Jmp = (Opcode==6'h02 && Function_opcode==6'h08)? 1'b1:1'b0;
-    assign Jal = (Opcode==6'h03 && Function_opcode==6'h08)? 1'b1:1'b0;
-    assign Branch = (Opcode==6'h04 && Function_opcode==6'h08)? 1'b1:1'b0;
-    assign nBranch = (Opcode==6'h05 && Function_opcode==6'h08)? 1'b1:1'b0;
+    assign Jmp = (Opcode==6'h02)? 1'b1:1'b0;
+    assign Jal = (Opcode==6'h03)? 1'b1:1'b0;
+    assign Branch = (Opcode==6'h04)? 1'b1:1'b0;
+    assign nBranch = (Opcode==6'h05)? 1'b1:1'b0;
 
     assign RegDST = R_format;
     assign MemtoReg = (Opcode==6'h23 && Function_opcode==6'h08)? 1'b1:1'b0;

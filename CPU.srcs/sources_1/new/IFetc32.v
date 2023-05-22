@@ -1,6 +1,7 @@
 `timescale 1ns / 1ps
-module IFetc32 (Instruction,branch_base_addr,Addr_result,Read_data_1,Branch,nBranch,Jmp,Jal,Jr,Zero,clock,reset,link_addr);
-    output[31:0] Instruction;			// the instruction fetched from this module
+module IFetc32 (Instruction,branch_base_addr,Addr_result,Read_data_1,Branch,nBranch,Jmp,Jal,Jr,Zero,clock,reset,link_addr,PC);
+    output[31:0] Instruction;
+    //input[31:0] Instruction;			// the instruction fetched from this module, in modification we get it from pgrom, becoming input
     output[31:0] branch_base_addr;      // (pc+4) to ALU which is used by branch type instruction
     output reg[31:0] link_addr = 0;             // (pc+4) to Decoder which is used by jal instruction
     
@@ -13,8 +14,9 @@ module IFetc32 (Instruction,branch_base_addr,Addr_result,Read_data_1,Branch,nBra
     input        Jr;                    // while Jr is 1, it means current instruction is jr
     input        Zero;                  // while Zero is 1, it means the ALUresult is zero
     input        clock,reset;       
-    reg[31:0] PC, Next_PC;    // Clock and reset (Synchronous reset signal, high level is effective, when reset=1, PC value is 0)
-
+    //reg[31:0] PC, Next_PC;    // Clock and reset (Synchronous reset signal, high level is effective, when reset=1, PC value is 0)
+    output reg[31:0] PC= 32'b0; 
+    reg[31:0]Next_PC;
     assign branch_base_addr = PC+4;
   
     wire[31:0] pc_plus_4;    
@@ -37,11 +39,11 @@ always @* begin
             PC <= Next_PC;
        
     end
-     prgrom instmem(
-                  .clka(clock),
-                  .addra(PC[15:2]),
-                  .douta(Instruction)
-                  );
+//     prgrom instmem(
+//                  .clka(clock),
+//                  .addra(PC[15:2]),
+//                  .douta(Instruction)
+//                  );
        always @(negedge clock or posedge reset) begin
                           if(reset) link_addr <= 0;
                           else if((Jal == 1)) 

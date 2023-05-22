@@ -27,6 +27,18 @@ module BCD_to_Cathodes (
           cathode = 8'b1111_1110; //8
         4'd9:
           cathode = 8'b1110_0110; //9
+        4'd10:
+          cathode = 8'b1110_1110; //A  
+        4'd11:
+          cathode = 8'b0011_1110;
+       4'd12:
+           cathode = 8'b1001_1100;  
+        4'd13:
+            cathode = 8'b0111_1010;
+        4'd14:
+            cathode = 8'b1001_1110;
+        4'd15:
+            cathode = 8'b1000_1110;                          
         default:
           cathode = 8'b1111_1100; //0          
       endcase

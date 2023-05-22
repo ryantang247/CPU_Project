@@ -16,7 +16,7 @@ module seven_seg_controller(
     );
     
 wire [3:0] refreshcounter;
-wire [2:0] a_digit;
+wire [3:0] a_digit;
 
 refreshcounter Refreshcounter_wrapper (
     .refresh_clock(clock),
